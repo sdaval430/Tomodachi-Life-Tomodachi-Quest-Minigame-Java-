@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 
-public class Main
+public class TomodachiQuest
 {
 	public void timeDelay(int seconds) {
 	    try {
@@ -9,182 +9,182 @@ public class Main
         } 
         catch (InterruptedException ie) {
             Thread.currentThread().interrupt();
-        }
+		}
 	}
 	
 	public int calculatePunchDMG() {
-	    int rollHit;
-	    int rollCrit;
-	    int rollDMG;
-	    
-	    Random rand = new Random();
-	    
-	    rollHit = rand.nextInt(11);
-	    if (rollHit == 0) {
-	        System.out.println("Miss!");
-	        return rollDMG = 0;
-	    }
-	    
-	    else {
-	        rollDMG = rand.nextInt(11) + 80;
-	    
-	        rollCrit = rand.nextInt(6);
-	        if (rollCrit == 1) {
-	            System.out.println("Critical hit!");
-	            rollDMG = rollDMG + 100;
-	        }
-	    }
-	    
-	    return rollDMG;
+		int rollHit;
+		int rollCrit;
+		int rollDMG = 0;
+		
+		Random rand = new Random();
+		
+		rollHit = rand.nextInt(11);
+		if (rollHit == 0) {
+			System.out.println("Miss!");
+			return 0;
+		}
+		
+		else {
+			rollDMG = rand.nextInt(11) + 80;
+		
+			rollCrit = rand.nextInt(6);
+			if (rollCrit == 1) {
+				System.out.println("Critical hit!");
+				rollDMG = rollDMG + 100;
+			}
+		}
+		
+		return rollDMG;
 	}
 	
 	public int calculateKickDMG() {
-	    int rollHit;
-	    int rollCrit;
-	    int rollDMG;
-	    
-	    Random rand = new Random();
-	    
-	    rollHit = rand.nextInt(4);
-	    if (rollHit == 0) {
-	        System.out.println("Miss!");
-	        return rollDMG = 0;
-	    }
-	    
-	    else {
-	        rollDMG = rand.nextInt(11) + 75;
-	    
-	        rollCrit = rand.nextInt(6);
-	        if (rollCrit == 1) {
-	            System.out.println("Critical hit!");
-	            rollDMG = rollDMG + 100;
-	        }
-	    }
-	    
-	    return rollDMG;
+		int rollHit;
+		int rollCrit;
+		int rollDMG = 0;
+		
+		Random rand = new Random();
+		
+		rollHit = rand.nextInt(4);
+		if (rollHit == 0) {
+			System.out.println("Miss!");
+			return 0;
+		}
+		
+		else {
+			rollDMG = rand.nextInt(11) + 75;
+		
+			rollCrit = rand.nextInt(6);
+			if (rollCrit == 1) {
+				System.out.println("Critical hit!");
+				rollDMG = rollDMG + 100;
+			}
+		}
+		
+		return rollDMG;
 	}
 	
 	public int calculateSlashDMG() {
-	    int rollHit;
-	    int rollCrit;
-	    int rollDMG;
-	    
-	    Random rand = new Random();
-	    
-	    rollHit = rand.nextInt(11);
-	    if (rollHit == 0) {
-	        System.out.println("Miss!");
-	        return rollDMG = 0;
-	    }
-	    
-	    else {
-	        rollDMG = rand.nextInt(11) + 80;
-	    
-	        rollCrit = rand.nextInt(4);
-	        if (rollCrit == 1) {
-	            System.out.println("Critical hit!");
-	            rollDMG = rollDMG + 100;
-	        }
-	    }
-	    
-	    return rollDMG;
+		int rollHit;
+		int rollCrit;
+		int rollDMG = 0;
+		
+		Random rand = new Random();
+		
+		rollHit = rand.nextInt(11);
+		if (rollHit == 0) {
+			System.out.println("Miss!");
+			return 0;
+		}
+		
+		else {
+			rollDMG = rand.nextInt(11) + 80;
+		
+			rollCrit = rand.nextInt(4);
+			if (rollCrit == 1) {
+				System.out.println("Critical hit!");
+				rollDMG = rollDMG + 100;
+			}
+		}
+		
+		return rollDMG;
 	}
 	
 	public int calculateSpecialDMG() {
-	    int rollHit;
-	    int rollCrit;
-	    int rollDMG;
-	    
-	    Random rand = new Random();
-	    
-	    rollHit = rand.nextInt(4);
-	    if (rollHit == 0) {
-	        System.out.println("Miss!");
-	        return rollDMG = 0;
-	    }
-	    
-	    else {
-	        rollDMG = rand.nextInt(51) + 150;
-	    
-	        rollCrit = rand.nextInt(4);
-	        if (rollCrit == 1) {
-	            System.out.println("Critical hit!");
-	            rollDMG = rollDMG + 100;
-	        }
-	    }
-	    
-	    return rollDMG;
+		int rollHit;
+		int rollCrit;
+		int rollDMG = 0;
+		
+		Random rand = new Random();
+		
+		rollHit = rand.nextInt(4);
+		if (rollHit == 0) {
+			System.out.println("Miss!");
+			return 0;
+		}
+		
+		else {
+			rollDMG = rand.nextInt(51) + 150;
+		
+			rollCrit = rand.nextInt(4);
+			if (rollCrit == 1) {
+				System.out.println("Critical hit!");
+				rollDMG = rollDMG + 100;
+			}
+		}
+		
+		return rollDMG;
 	}
 	
 	public int calculateWeakDMG() {
-	    int rollHit;
-	    int rollCrit;
-	    int rollDMG;
-	    
-	    Random rand = new Random();
-	    
-	    rollHit = rand.nextInt(4);
-	    if (rollHit == 0) {
-	        System.out.println("Miss!");
-	        return rollDMG = 0;
-	    }
-	    
-	    else {
-	        rollDMG = rand.nextInt(11) + 40;
-	    
-	        rollCrit = rand.nextInt(6);
-	        if (rollCrit == 1) {
-	            System.out.println("Critical hit!");
-	            rollDMG = rollDMG + 50;
-	        }
-	    }
-	    
-	    return rollDMG;
+		int rollHit;
+		int rollCrit;
+		int rollDMG = 0;
+		
+		Random rand = new Random();
+		
+		rollHit = rand.nextInt(4);
+		if (rollHit == 0) {
+			System.out.println("Miss!");
+			return 0;
+		}
+		
+		else {
+			rollDMG = rand.nextInt(11) + 40;
+		
+			rollCrit = rand.nextInt(6);
+			if (rollCrit == 1) {
+				System.out.println("Critical hit!");
+				rollDMG = rollDMG + 50;
+			}
+		}
+		
+		return rollDMG;
 	}
 	
 	public int calculateSpellDMG() {
-	    int rollHit;
-	    int rollCrit;
-	    int rollDMG;
-	    
-	    Random rand = new Random();
-	    
-	    rollHit = rand.nextInt(3);
-	    if (rollHit == 0) {
-	        System.out.println("Miss!");
-	        return rollDMG = 0;
-	    }
-	    
-	    else {
-	        rollDMG = rand.nextInt(11) + 180;
-	    
-	        rollCrit = rand.nextInt(6);
-	        if (rollCrit == 1) {
-	            System.out.println("Critical hit!");
-	            rollDMG = rollDMG + 100;
-	        }
-	    }
-	    
-	    return rollDMG;
+		int rollHit;
+		int rollCrit;
+		int rollDMG = 0;
+		
+		Random rand = new Random();
+		
+		rollHit = rand.nextInt(3);
+		if (rollHit == 0) {
+			System.out.println("Miss!");
+			return 0;
+		}
+		
+		else {
+			rollDMG = rand.nextInt(11) + 180;
+		
+			rollCrit = rand.nextInt(6);
+			if (rollCrit == 1) {
+				System.out.println("Critical hit!");
+				rollDMG = rollDMG + 100;
+			}
+		}
+		
+		return rollDMG;
 	}
 	
 	public int calculateBossDMG() {
-	    int rollHit;
-	    int rollDMG;
-	    
-	    Random rand = new Random();
-	     
-	    rollHit = rand.nextInt(3);
-	    if (rollHit == 0) {
-	        System.out.println("Miss!");
-	        return rollDMG = 0;
-	    }
-	    
-	    else {
-	        rollDMG = rand.nextInt(16) + 20;
-	    }
-	    
-	    return rollDMG;
+		int rollHit;
+		int rollDMG = 0;
+		
+		Random rand = new Random();
+		 
+		rollHit = rand.nextInt(3);
+		if (rollHit == 0) {
+			System.out.println("Miss!");
+			return 0;
+		}
+		
+		else {
+			rollDMG = rand.nextInt(16) + 20;
+		}
+		
+		return rollDMG;
 	}
 	
 	public int calculateFireDMG() {
@@ -198,7 +198,7 @@ public class Main
 	}
 	
 	public static void main(String[] args) {
-		Scanner scnr = new Scanner(System.in);
+		try (Scanner scnr = new Scanner(System.in)) {
 		
 		String[] miiParty = {"Mii Fighter", "Mii Warrior", "Mii Cleric", "Mii Mage"};
 		String[][] boss = { {"bacon", "cheese", "corn on the cob"}, {"cheeseburger", "creamy stew", "lasagna"}, {"barbeque", "steak", "roast beef"} };
@@ -215,15 +215,15 @@ public class Main
 		int bossType = 0;
 		String currEncounter;
 		
-		Main desiredDelay = new Main();
-		Main punchDMG = new Main();
-		Main kickDMG = new Main();
-		Main slashDMG = new Main();
-		Main specialDMG = new Main();
-		Main weakDMG = new Main();
-		Main spellDMG = new Main();
-		Main bossDMG = new Main();
-		Main fireDMG = new Main();
+		TomodachiQuest desiredDelay = new TomodachiQuest();
+		TomodachiQuest punchDMG = new TomodachiQuest();
+		TomodachiQuest kickDMG = new TomodachiQuest();
+		TomodachiQuest slashDMG = new TomodachiQuest();
+		TomodachiQuest specialDMG = new TomodachiQuest();
+		TomodachiQuest weakDMG = new TomodachiQuest();
+		TomodachiQuest spellDMG = new TomodachiQuest();
+		TomodachiQuest bossDMG = new TomodachiQuest();
+		TomodachiQuest fireDMG = new TomodachiQuest();
 		Random rand = new Random();
 		
 		System.out.println("Welcome to TOMODACHI QUEST!");
@@ -240,8 +240,9 @@ public class Main
 		
 		System.out.println("Press '1' to continue:");
 		
-		while (userInput != 1)
-		    userInput = scnr.nextInt();
+		while (userInput != 1) {
+			userInput = scnr.nextInt();
+		}
 		    
 		while (numEncounter != 4) {
 		    if (numEncounter == 0) {
@@ -380,10 +381,14 @@ public class Main
         						        }
         						        else {
         						            healthGained = 100;
-        						        }
-        						    }
-        						}
-        						else if (weakestMii == 1) {
+											}
+											
+										}
+										else {
+											healthGained = 100;
+										}
+									}
+								else if (weakestMii == 1) {
         						    if (miiHealth[weakestMii] < 120) {
         						        dmgTaken = true;
         						        miiHealth[weakestMii] = miiHealth[weakestMii] + 100;
@@ -547,3 +552,5 @@ public class Main
 		
 	}
 }
+}
+
