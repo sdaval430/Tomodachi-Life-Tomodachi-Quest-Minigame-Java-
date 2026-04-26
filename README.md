@@ -1,3 +1,6 @@
+**Tomodachi Quest Minigame RPG in Java**
+
+
 This is a personal project in Java that is the product of me reverse-engineering the "Tomodachi Quest" minigame present in the main game of "Tomodachi Life" for the Nintendo 3DS, a game where players can add their Mii 
 characters onto an island for them to live and interact in. The minigame itself appears in a Mii's dream sequence where 4 random Miis are selected to form the "party" consisting of different classes based on the Mii's 
 personality. The gameplay is very simple as it follows the basic RPG game loop of allowing the player to select different actions for each party member before the enemy can make a move themselves against the party. 
