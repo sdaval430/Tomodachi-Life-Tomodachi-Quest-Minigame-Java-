@@ -3,9 +3,12 @@ import java.util.Random;
 
 public class TomodachiQuest
 {	
-	public void displayHealthAndMana(String[] party, int[] health, int[] mana) {
+	public void displayHealthAndMana(String[] party, int[] health, int[] maxHealth,int[] mana) {
 		for (int i = 0; i < 4; i++) {
-			System.out.println(party[i] + "  HEALTH: " + health[i]);
+			if (health[i] < 0) {
+				health[i] = 0;
+			}
+			System.out.println(party[i] + "  HEALTH: " + health[i] + "/" + maxHealth[i]);
 			if (i > 1) {
 				System.out.println(party[i] + "  MANA: " + mana[i - 2]);
 			}
@@ -31,6 +34,7 @@ public class TomodachiQuest
 		rollHit = rand.nextInt(11);
 		if (rollHit == 0) {
 			System.out.println("Miss!");
+			System.out.println();
 			return 0;
 		}
 		
@@ -213,6 +217,7 @@ public class TomodachiQuest
 		String[][] boss = { {"bacon", "cheese", "corn on the cob"}, {"cheeseburger", "creamy stew", "lasagna"}, {"barbeque", "steak", "roast beef"} };
 		String[] finalBoss = {"birthday cake", "disco ball", "teddy bear", "engagement ring"};
 		int[] miiHealth = {140, 120, 100, 80};
+		int[] miiMaxHealth = {140, 120, 100, 80};
 		int[] miiMana = {40, 60};
 		int[] bossHealth = {250, 650, 800, 2800};
 		
@@ -237,13 +242,15 @@ public class TomodachiQuest
 		Random rand = new Random();
 		
 		System.out.println("Welcome to TOMODACHI QUEST!");
+
+		desiredDelay.timeDelay(1);
         
 		System.out.println("Your Mii's: ");
 		
-		desiredDelay.timeDelay(1);
+		desiredDelay.timeDelay(2);
         
-		displayHeathAndMana.displayHealthAndMana(miiParty, miiHealth, miiMana);
-		desiredDelay.timeDelay(1);
+		displayHeathAndMana.displayHealthAndMana(miiParty, miiHealth, miiMaxHealth, miiMana);
+		desiredDelay.timeDelay(2);
 
 		System.out.println("LET THE JOURNEY BEGIN!!");
 		
@@ -278,20 +285,21 @@ public class TomodachiQuest
     		bossType = randInt;
     		if (numEncounter == 3) {
     		    currEncounter = finalBoss[bossType];
+				System.out.println("The final boss " + currEncounter + " appeared!");
     		}
     		else {
     		    currEncounter = boss[numEncounter][bossType];
+				System.out.println(currEncounter + " appeared!");
     		}
-    		System.out.println(currEncounter + " appeared!");
 			desiredDelay.timeDelay(2);
     		
     		while (bossHealth[numEncounter] > 0) {
 				System.out.println("Your Miis:");
 				System.out.println();
-				desiredDelay.timeDelay(1);
-				displayHeathAndMana.displayHealthAndMana(miiParty, miiHealth, miiMana);
+				desiredDelay.timeDelay(2);
+				displayHeathAndMana.displayHealthAndMana(miiParty, miiHealth, miiMaxHealth, miiMana);
 				System.out.println();
-				desiredDelay.timeDelay(1);
+				desiredDelay.timeDelay(2);
     		    for (i = 0; i < 4; i++) {
 					if (miiHealth[0] <= 0 && miiHealth[1] <= 0 && miiHealth[2] <= 0 && miiHealth[3] <= 0) {
 						System.out.println("All Miis have been defeated...");
@@ -299,8 +307,9 @@ public class TomodachiQuest
 						System.out.println("Game Over!");
 						return;
 					}
-        		    if (miiHealth[i] == 0) {
+        		    if (miiHealth[i] <= 0) {
         		        System.out.println(miiParty[i] + " is pretending to be dead.");
+						System.out.println();
         		        desiredDelay.timeDelay(1);
 						continue;
         		    }
@@ -314,23 +323,27 @@ public class TomodachiQuest
             		        userInput = scnr.nextInt();
             		        if (userInput == 1) {
             		            System.out.println(miiParty[i] + " punched!");
-            		            desiredDelay.timeDelay(1);
+								System.out.println();
+            		            desiredDelay.timeDelay(2);
         						attackDMG = punchDMG.calculatePunchDMG();
             		            bossHealth[numEncounter] = bossHealth[numEncounter] - attackDMG;
         						
         						if (attackDMG > 0) {
         						    System.out.println(currEncounter + " received " + attackDMG + " damage.");
+									System.out.println();
         						}
             		            desiredDelay.timeDelay(1);
             		        }
             		        else if (userInput == 2) {
             		            System.out.println(miiParty[i] + " kicked!");
-            		            desiredDelay.timeDelay(1);
+								System.out.println();
+            		            desiredDelay.timeDelay(2);
         						attackDMG = kickDMG.calculateKickDMG();
             		            bossHealth[numEncounter] = bossHealth[numEncounter] - attackDMG;
         						
         						if (attackDMG > 0) {
         						    System.out.println(currEncounter + " received " + attackDMG + " damage.");
+									System.out.println();
         						}
             		            desiredDelay.timeDelay(1);   
             		        }
@@ -340,23 +353,27 @@ public class TomodachiQuest
             		        userInput = scnr.nextInt();
             		        if (userInput == 1) {
             		            System.out.println(miiParty[i] + " used slash!");
-            		            desiredDelay.timeDelay(1);
+								System.out.println();
+            		            desiredDelay.timeDelay(2);
         						attackDMG = slashDMG.calculateSlashDMG();
             		            bossHealth[numEncounter] = bossHealth[numEncounter] - attackDMG;
         						
         						if (attackDMG > 0) {
         						    System.out.println(currEncounter + " received " + attackDMG + " damage.");
+									System.out.println();
         						}
             		            desiredDelay.timeDelay(1);
             		        }
             		        else if (userInput == 2) {
             		            System.out.println(miiParty[i] + " used special attack!");
-            		            desiredDelay.timeDelay(1);
+								System.out.println();
+            		            desiredDelay.timeDelay(2);
         						attackDMG = specialDMG.calculateSpecialDMG();
             		            bossHealth[numEncounter] = bossHealth[numEncounter] - attackDMG;
         						
         						if (attackDMG > 0) {
         						    System.out.println(currEncounter + " received " + attackDMG + " damage.");
+									System.out.println();
         						}
             		            desiredDelay.timeDelay(1);   
             		        }
@@ -366,18 +383,21 @@ public class TomodachiQuest
             		        userInput = scnr.nextInt();
             		        if (userInput == 1) {
             		            System.out.println(miiParty[i] + " attacked!");
-            		            desiredDelay.timeDelay(1);
+								System.out.println();
+            		            desiredDelay.timeDelay(2);
         						attackDMG = weakDMG.calculateWeakDMG();
             		            bossHealth[numEncounter] = bossHealth[numEncounter] - attackDMG;
         						
         						if (attackDMG > 0) {
         						    System.out.println(currEncounter + " received " + attackDMG + " damage.");
+									System.out.println();
         						}
             		            desiredDelay.timeDelay(1);
             		        }
             		        else if (userInput == 2) {
             		            System.out.println(miiParty[i] + " cast Heal!");
-            		            desiredDelay.timeDelay(1);
+								System.out.println();
+            		            desiredDelay.timeDelay(2);
             		            int j;
             		            int healthGained = 0;
             		            int lowestHealth = 200;
@@ -386,6 +406,7 @@ public class TomodachiQuest
             		            
             		            if (miiMana[0] < 10) {
             		                System.out.println("Not enough mana!");
+									System.out.println();
             		                continue;
             		            }
             		            
@@ -409,13 +430,10 @@ public class TomodachiQuest
         						        }
         						        else {
         						            healthGained = 100;
-											}
+										}
 											
-										}
-										else {
-											healthGained = 100;
-										}
 									}
+								}
 								else if (weakestMii == 1) {
         						    if (miiHealth[weakestMii] < 120) {
         						        dmgTaken = true;
@@ -461,12 +479,14 @@ public class TomodachiQuest
         						if (dmgTaken) {
         						    miiMana[0] = miiMana[0] - 10;
         						    System.out.println(miiParty[weakestMii] + " regained " + healthGained + " health.");
+									
         						}
         						else {
         						    System.out.println("Nothing happened...");
         						}
             		            
-            		            desiredDelay.timeDelay(1);   
+								System.out.println();
+            		            desiredDelay.timeDelay(2);   
             		        }
                         }
         		        else {
@@ -474,23 +494,34 @@ public class TomodachiQuest
             		        userInput = scnr.nextInt();
             		        if (userInput == 1) {
             		            System.out.println(miiParty[i] + " attacked!");
-            		            desiredDelay.timeDelay(1);
+								System.out.println();
+            		            desiredDelay.timeDelay(2);
         						attackDMG = weakDMG.calculateWeakDMG();
             		            bossHealth[numEncounter] = bossHealth[numEncounter] - attackDMG;
         						
         						if (attackDMG > 0) {
         						    System.out.println(currEncounter + " received " + attackDMG + " damage.");
+									System.out.println();
         						}
             		            desiredDelay.timeDelay(1);
             		        }
             		        else if (userInput == 2) {
             		            System.out.println(miiParty[i] + " cast Spell!");
-            		            desiredDelay.timeDelay(1);
+								System.out.println();
+            		            desiredDelay.timeDelay(2);
+
+								if (miiMana[1] < 10) {
+            		                System.out.println("Not enough mana!");
+									System.out.println();
+            		                continue;
+            		            }
+
         						attackDMG = spellDMG.calculateSpellDMG();
             		            bossHealth[numEncounter] = bossHealth[numEncounter] - attackDMG;
         						
         						if (attackDMG > 0) {
         						    System.out.println(currEncounter + " received " + attackDMG + " damage.");
+									System.out.println();
         						}
         						miiMana[1] = miiMana[1] - 10;
             		            desiredDelay.timeDelay(1);   
@@ -500,7 +531,7 @@ public class TomodachiQuest
     		
         		    if (bossHealth[numEncounter] <= 0) {
         		        System.out.println(currEncounter + " is defeated!");
-        		        desiredDelay.timeDelay(1); 
+        		        desiredDelay.timeDelay(2); 
         		        break;
         		    }
     		    }
@@ -519,8 +550,12 @@ public class TomodachiQuest
     		        
     		        if (randInt == 0) {
     		            System.out.println(currEncounter + " attacked!");
-    		            desiredDelay.timeDelay(1);
-    		            attackDMG = bossDMG.calculateBossDMG() * 2;
+						System.out.println();
+    		            desiredDelay.timeDelay(2);
+    		            attackDMG = bossDMG.calculateBossDMG();
+						if (attackDMG > 0) {
+							attackDMG = attackDMG + 15;
+						}
     		        }
     		        else {
     		            isFire = true;
@@ -531,8 +566,9 @@ public class TomodachiQuest
     		        
     		        if (randInt > 2) {
     		            System.out.println(currEncounter + " attacked!");
+						System.out.println();
+						desiredDelay.timeDelay(2);
 						attackDMG = bossDMG.calculateBossDMG();
-    		            desiredDelay.timeDelay(1);
     		        }
     		        else {
     		            isFire = true;
@@ -541,9 +577,10 @@ public class TomodachiQuest
     		    
     		    if (isFire) {
 					System.out.println(currEncounter + " used Fire!");
+					System.out.println();
     		        for (int k = 0; k < 4; k++) {
     		            if (numEncounter == 3) {
-    		                attackDMG = fireDMG.calculateFireDMG() * 2;
+    		                attackDMG = fireDMG.calculateFireDMG() + 10;
     		                desiredDelay.timeDelay(1);
     		            }
     		            else {
@@ -556,13 +593,13 @@ public class TomodachiQuest
 						else {
 							miiHealth[k] = miiHealth[k] - attackDMG;
     		            	System.out.println(miiParty[k] + " recieved " + attackDMG + " damage.");
-    		            	desiredDelay.timeDelay(1);
+							System.out.println();
 						}
     		            
     		            if (miiHealth[k] <= 0) {
 							miiHealth[k] = 0;
     		                System.out.println(miiParty[k] + " pretended to die.");
-    		                desiredDelay.timeDelay(1);
+							System.out.println();
     		            }
     		        }
     		    }
@@ -578,10 +615,12 @@ public class TomodachiQuest
 					else {
 						miiHealth[randInt] = miiHealth[randInt] - attackDMG;
 						System.out.println(miiParty[randInt] + " recieved " + attackDMG + " damage.");
-							desiredDelay.timeDelay(1);
+						System.out.println();
+						desiredDelay.timeDelay(1);
 							
 						if (miiHealth[randInt] <= 0) {
 							System.out.println(miiParty[randInt] + " pretended to die.");
+							System.out.println();
 							desiredDelay.timeDelay(1);
 						}
 					}
